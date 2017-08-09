@@ -32,7 +32,7 @@ function createTemplate (data){
             <h3>${heading}</h3>
             <div>${date}</div>
             <div>
-               ${contet}
+               ${content}
             </div>
             </div>
         </body>
