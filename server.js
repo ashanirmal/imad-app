@@ -5,6 +5,42 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleone = {
+    title: 'Article one - Asha Nirmal',
+    heading: 'News of the Day',
+    date: 'Aug 9, 2017',
+    content: `<p>The poll for three Rajya Sabha seats in Gujarat has assumed all the proportions of a national election, thanks to the fierce contest anticipated between the Congress's Ahmed Patel and his former party colleague Balwantsinh Rajput, who skipped to the BJP last month.</p>
+        <p>After a gap of two decades, there's a real in the Rajya Sabha polls in Gujarat. It used to be that official nominees of major parties would get elected unopposed. Not today. There are four contestants eyeing three Rajya Sabha seats in Gujarat. They are BJP president Amit Shah, Union Minister Smriti Irani, Rajput and Patel.</p>
+        <p>Varnika, daughter of additional chief secretary of Haryana Tourism, is one of the few woman DJs in Chandigarh</p>
+        <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
+    
+}
+function createTemplate (data){
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var htmltemplete =`
+    <html>
+        <head>
+            <title>${title}</title>
+            <meta name="viewport" content="width-device-width, initial-scale=1"/>
+            <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+            <h3>${heading}</h3>
+            <div>${date}</div>
+            <div>
+               ${contet}
+            </div>
+            </div>
+        </body>
+    </html>
+    `;
+    return htmltemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -17,7 +53,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 app.get('/article-one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'article-one.html'));
+  res.sendFile(path.join(__dirname,createTemplate(articleone)));
 });
 app.get('/article-two', function (req, res) {
   res.send("Article two requested");
