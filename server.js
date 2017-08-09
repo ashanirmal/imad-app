@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var articles = {
-article-one = {
+'article-one' : {
     title: 'Article one - Asha Nirmal',
     heading: 'News of the Day',
     date: 'Aug 9, 2017',
@@ -16,7 +16,7 @@ article-one = {
         <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
     
     }  ,
-article-two = {
+'article-two' : {
     title: 'Article two - Asha Nirmal',
     heading: 'News of the Day',
     date: 'Aug 10, 2017',
@@ -26,7 +26,7 @@ article-two = {
         <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
     
     }  ,
-article-three = {
+'article-three' : {
     title: 'Article three - Asha Nirmal',
     heading: 'News of the Day',
     date: 'Aug 9, 2017',
