@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleone = {
+var articles = {
+article-one = {
     title: 'Article one - Asha Nirmal',
     heading: 'News of the Day',
     date: 'Aug 9, 2017',
@@ -14,6 +15,27 @@ var articleone = {
         <p>Varnika, daughter of additional chief secretary of Haryana Tourism, is one of the few woman DJs in Chandigarh</p>
         <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
     
+    }  ,
+article-two = {
+    title: 'Article two - Asha Nirmal',
+    heading: 'News of the Day',
+    date: 'Aug 10, 2017',
+    content: `<p>The poll for three Rajya Sabha seats in Gujarat has assumed all the proportions of a national election, thanks to the fierce contest anticipated between the Congress's Ahmed Patel and his former party colleague Balwantsinh Rajput, who skipped to the BJP last month.</p>
+        <p>After a gap of two decades, there's a real in the Rajya Sabha polls in Gujarat. It used to be that official nominees of major parties would get elected unopposed. Not today. There are four contestants eyeing three Rajya Sabha seats in Gujarat. They are BJP president Amit Shah, Union Minister Smriti Irani, Rajput and Patel.</p>
+        <p>Varnika, daughter of additional chief secretary of Haryana Tourism, is one of the few woman DJs in Chandigarh</p>
+        <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
+    
+    }  ,
+article-three = {
+    title: 'Article three - Asha Nirmal',
+    heading: 'News of the Day',
+    date: 'Aug 9, 2017',
+    content: `<p>The poll for three Rajya Sabha seats in Gujarat has assumed all the proportions of a national election, thanks to the fierce contest anticipated between the Congress's Ahmed Patel and his former party colleague Balwantsinh Rajput, who skipped to the BJP last month.</p>
+        <p>After a gap of two decades, there's a real in the Rajya Sabha polls in Gujarat. It used to be that official nominees of major parties would get elected unopposed. Not today. There are four contestants eyeing three Rajya Sabha seats in Gujarat. They are BJP president Amit Shah, Union Minister Smriti Irani, Rajput and Patel.</p>
+        <p>Varnika, daughter of additional chief secretary of Haryana Tourism, is one of the few woman DJs in Chandigarh</p>
+        <p>Bonnie S Glaser said China sees India as biggest rising power that could pose challenge. Chinese President Xi Jinping sees Prime Minister Narendra Modi as a leader who is willing to stand up for Indian interests and to work together with other countries in the region that are looking to impose constraints on China, a top American Chinese expert has said.</p>`
+    
+    } 
 }
 function createTemplate (data){
     var title = data.title;
@@ -51,8 +73,8 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleone));
+app.get('/:articleName', function (req, res) {
+  res.send(createTemplate(articles[articleName]));
 });
 app.get('/article-two', function (req, res) {
   res.send("Article two requested");
