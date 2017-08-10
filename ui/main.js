@@ -1,7 +1,5 @@
 console.log('Loaded!');
 //change the text of main element
-var element = document.getElementById('maintext');
-element.innerHTML = 'New Value';
 
 //move the image
 var madi = document.getElementById('madi');
@@ -14,3 +12,8 @@ madi.onclick = function () {
     var interval = setInterval(moveRight,50);
     
 };
+var button=document.getElementById('counter');
+button.onclick() = function () {
+    var span = document.getElementById('count');
+    span.innerHTML = 33;
+}
