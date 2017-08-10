@@ -23,7 +23,7 @@ button.onclick = function() {
           if (req.status === 200){
               var counter = req.response.Text;
               var span = document.getElementById('count');
-              span.innerHTML = '33';
+              span.innerHTML = counter.toString() + ' ';
           }
       }  
     };
