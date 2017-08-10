@@ -56,7 +56,7 @@ submit.onclick = function (){
           }
       }  
     };
-    
+    console.log('name1 '+name1);
     req.open('GET', 'http://ashanirmal.imad.hasura-app.io/submit-name?name='+name1,true);
     req.send(null);
     console.log('called name api');
