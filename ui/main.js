@@ -33,10 +33,9 @@ button.onclick = function() {
 };
 //submit name
 var nameInput = document.getElementById('name');
-var name1 = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function (){
-
+    var name1 = nameInput.value;
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
       if (req.readyState === XMLHttpRequest.DONE){
