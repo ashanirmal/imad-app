@@ -19,8 +19,8 @@ button.onclick = function() {
       if (req.readyState === XMLHttpRequest.DONE){
           console.log('request status : ' + req.status);
           if (req.status === 200){
-              console.log('response : ' + req.response.Text);
-              var counter = req.response.Text;
+              console.log('response : ' + req.responseText);
+              var counter = req.responseText;
               var span = document.getElementById('count');
               span.innerHTML = counter + ' ';
           }
