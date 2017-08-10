@@ -14,6 +14,17 @@ madi.onclick = function () {
 };
 var button=document.getElementById('counter');
 button.onclick = function() {
-    var span = document.getElementById('count');
-    span.innerHTML = '33';
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+      if (req.readyState === XMLHttpRequest.DONE){
+          if (req.statys === 200){
+              var counter = req.response.Text;
+              var span = document.getElementById('count');
+              span.innerHTML = '33';
+          }
+      }  
+    };
+    
+    req.open('GET', 'http://ashanirmal.imad.hasura-app.io/counter',true);
+    req.send(null);
 };
