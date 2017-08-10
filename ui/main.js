@@ -13,3 +13,7 @@ madi.onclick = function () {
     
 };
 var button=document.getElementById('counter');
+button.onclick = function() {
+    var span = document.getElementById('count');
+    span.innerHTML = '33';
+};
