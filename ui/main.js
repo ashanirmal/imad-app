@@ -16,6 +16,7 @@ var button=document.getElementById('counter');
 button.onclick = function() {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
+        console.log('request ready');
       if (req.readyState === XMLHttpRequest.DONE){
           if (req.statys === 200){
               var counter = req.response.Text;
@@ -27,4 +28,5 @@ button.onclick = function() {
     
     req.open('GET', 'http://ashanirmal.imad.hasura-app.io/counter',true);
     req.send(null);
+    console.log('called counter api');
 };
