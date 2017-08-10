@@ -36,11 +36,28 @@ var nameInput = document.getElementById('name');
 var name1 = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function (){
-  var names = ['name2','name2','name3'];
-  var list ='';
-  for (var i=0; i < names.length; i++){
-      list += '<li>'+ names[i]+'</li>';
-  }
-  var ul = document.getElementById('namelist');
-  ul.innerHTML = list;
+
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+      if (req.readyState === XMLHttpRequest.DONE){
+          console.log('request status : ' + req.status);
+          if (req.status === 200){
+              console.log('response : ' + req.responseText);
+              var names = JSON.parse(req.responseText);
+              for (var nm in names){
+                  console.log('name '+nm);
+              }
+              //var list ='';
+              //for (var i=0; i < names.length; i++){
+                //  list += '<li>'+ names[i]+'</li>';
+              //}
+              //var ul = document.getElementById('namelist');
+              //ul.innerHTML = list;
+          }
+      }  
+    };
+    
+    req.open('GET', 'http://ashanirmal.imad.hasura-app.io/submit-name?name='+name1,true);
+    req.send(null);
+    console.log('called name api');
 };
