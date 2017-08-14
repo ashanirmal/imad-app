@@ -10,6 +10,7 @@ var config= {
     port:'5432',
     password: process.env.DB_PASSWORD
 }
+var pool = new Pool(config);
 
 var app = express();
 app.use(morgan('combined'));
@@ -87,7 +88,6 @@ app.get('/submit-name', function (req, res) {
 });
 app.get('/test-db', function (req, res) {
     //make a db req and send response
-    var pool = new Pool(config);
     pool.query('SELECT * FROM article', function (err, result) {
         if (err){
             res.status(500).send(err.toString());
@@ -108,8 +108,7 @@ app.get('/:aName', function (req, res) {
     var articleName = req.params.aName;
     var qry = "SELECT * from article where title = "+articleName;
     res.send(qry + " requested");
-    var pool2 = new Pool(config);
-    pool2.query(qry , function (err, result) {
+    pool.query(qry , function (err, result) {
         res.send(articleName + " requested 2");
        /*if (err){
             res.status(500).send(err.toString());
