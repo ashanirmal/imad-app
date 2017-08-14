@@ -108,22 +108,23 @@ app.get('/:aName', function (req, res) {
     var articleName = req.params.aName;
     var qry = "SELECT * from article where title = "+articleName;
     res.send(qry + " requested");
-    var pool = new Pool(config);
-    pool.query(qry , function (err, result) {
-        if (err){
+    var pool2 = new Pool(config);
+    pool2.query(qry , function (err, result) {
+        res.send(articleName + " requested 2");
+       /*if (err){
             res.status(500).send(err.toString());
         }
         else {
             res.send(articleName + " requested 2");
-            /*if (result.rows.length === 0) {
+            if (result.rows.length === 0) {
                 res.status(400).send("Article Not Found");
             }
             else {
                 var articleData = result.rows[0];
                 res.send(createTemplate(articles[articleData]));
-            }*/
-        }
-    }) ;
+            }
+        }*/
+    });
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
