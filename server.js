@@ -106,8 +106,9 @@ app.get('/ui/madi.png', function (req, res) {
 });
 app.get('/:aName', function (req, res) {
     var articleName = req.params.aName;
-    var pool = new Pool(config);
-    pool.query("SELECT * from article where title = "+articleName , function (error, result) {
+    res.send(articleName + " requested");
+    //var pool = new Pool(config);
+    /*pool.query("SELECT * from article where title = "+articleName , function (error, result) {
         if (err){
             res.status(500).send(err.toString());
         }
@@ -120,7 +121,7 @@ app.get('/:aName', function (req, res) {
                 res.send(createTemplate(articles[articleData]));
             }
         }
-    }) ;
+    }) ;*/
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
