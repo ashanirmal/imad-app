@@ -104,9 +104,22 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-app.get('/:aName', function (req, res) {
+app.get('/articles/:aName', function (req, res) {
     var articleName = req.params.aName;
-  res.send(createTemplate(articles[articleName]));
+    pool.query("SELECT * from article where title = "+articleName , function (error, result) {
+        if (err){
+            res.status(500).send(err.toString());
+        }
+        else {
+            if (result.rows.length === 0) {
+                res.status(400).send("Article Not Found");
+            }
+            else {
+                var articleData = result.rows[0];
+                res.send(createTemplate(articles[articleData]));
+            }
+        }
+    }) ;
 });
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
