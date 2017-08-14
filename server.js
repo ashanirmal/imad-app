@@ -106,6 +106,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 app.get('/articles/:aName', function (req, res) {
     var articleName = req.params.aName;
+    var pool = new Pool(config);
     pool.query("SELECT * from article where title = "+articleName , function (error, result) {
         if (err){
             res.status(500).send(err.toString());
