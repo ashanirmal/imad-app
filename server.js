@@ -104,7 +104,7 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-app.get('/articles/:aName', function (req, res) {
+app.get('/:aName', function (req, res) {
     var articleName = req.params.aName;
     var pool = new Pool(config);
     pool.query("SELECT * from article where title = "+articleName , function (error, result) {
