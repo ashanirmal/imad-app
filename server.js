@@ -112,13 +112,13 @@ app.get('/:aName', function (req, res) {
             res.status(500).send(err.toString());
         }
         else {
-            //res.send(qry + " : requested : " +  result.rows.length);
             if (result.rows.length === 0) {
                 res.status(400).send("Article Not Found");
             }
             else {
                 var articleData = result.rows[0];
-                res.send(createTemplate(articles[articleData]));
+                res.send(JSON.stringify(articleData));
+                //res.send(createTemplate(articles[articleData]));
             }
         }
     });
