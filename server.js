@@ -112,6 +112,7 @@ app.get('/:aName', function (req, res) {
             res.status(500).send(err.toString());
         }
         else {
+            res.send(qry + " : requested : " +  result.rows.length);
             if (result.rows.length === 0) {
                 res.status(400).send("Article Not Found");
             }
