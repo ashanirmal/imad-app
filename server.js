@@ -48,12 +48,12 @@ var articles = {
     } 
 }
 function createTemplate (data){
-    /*var title = data.title;
+    var title = data.title;
     var heading = data.heading;
     //var date = data.date;
     //var dateStr = data.date.toString(); 
     var content = data.content;
-    var htmltemplate =`<html>
+    /*var htmltemplate =`<html>
         <head>
             <title>${title}</title>
             <meta name="viewport" content="width-device-width, initial-scale=1"/>
@@ -119,7 +119,6 @@ app.get('/:aName', function (req, res) {
             }
             else {
                 var articleData = result.rows[0];
-                //res.send(articleData);
                 res.send(createTemplate(articleData));
             }
         }
