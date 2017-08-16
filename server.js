@@ -48,10 +48,10 @@ var articles = {
     } 
 }
 function createTemplate (data){
-    var title = data.title;
+    /*var title = data.title;
     var heading = data.heading;
     //var date = data.date;
-    var dateStr = data.date.toString(); 
+    //var dateStr = data.date.toString(); 
     var content = data.content;
     var htmltemplate =`<html>
         <head>
@@ -69,7 +69,8 @@ function createTemplate (data){
             </div>
         </body>
     </html>
-    `;
+    `;*/
+    return "<html><head></head><body>Asha</body></html>"
     return htmltemplate;
 }
 
