@@ -53,7 +53,7 @@ function createTemplate (data){
     //var date = data.date;
     var dateStr = data.date.toString(); 
     var content = data.content;
-    /*var htmltemplate =`<html>
+    var htmltemplate =`<html>
         <head>
             <title>${title}</title>
             <meta name="viewport" content="width-device-width, initial-scale=1"/>
@@ -69,7 +69,7 @@ function createTemplate (data){
             </div>
         </body>
     </html>
-    `;*/
+    `;
     //return "<html><head></head><body>data</body></html>"
     return data;
 }
