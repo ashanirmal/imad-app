@@ -70,7 +70,7 @@ function createTemplate (data){
         </body>
     </html>
     `;*/
-    return "<html><head></head><body>${title}</body></html>"
+    return "<html><head></head><body>data</body></html>"
     return htmltemplate;
 }
 
