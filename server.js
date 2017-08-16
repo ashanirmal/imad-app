@@ -48,7 +48,7 @@ var articles = {
     } 
 }
 function createTemplate (data){
-    var title = data.title;
+    /*var title = data.title;
     var heading = data.heading;
     //var date = data.date;
     //var dateStr = data.date.toString(); 
@@ -69,9 +69,9 @@ function createTemplate (data){
             </div>
         </body>
     </html>
-    `;
+    `;*/
     //return "<html><head></head><body>data</body></html>"
-    return htmltemplate;
+    return data;
 }
 
 app.get('/', function (req, res) {
