@@ -19,7 +19,7 @@ var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
-    secret: '',
+    secret: 'Some-Random-String',
     cookie: {maxAge: 1000 * 60 * 5} //5 min
 }));
 
