@@ -31,6 +31,9 @@ button.onclick = function() {
     req.send(null);
     console.log('called counter api');
 };
+
+
+
 //submit name
 var nameInput = document.getElementById('name');
 var submit = document.getElementById('submit_btn');
@@ -59,4 +62,31 @@ submit.onclick = function (){
     req.open('GET', 'http://ashanirmal.imad.hasura-app.io/submit-name?name='+name1,true);
     req.send(null);
     console.log('called name api');
+};
+
+//Login
+var username = document.getElementById('username');
+var password = document.getElementById('password');
+var login = document.getElementById('login-btn');
+login.onclick = function (){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+      if (req.readyState === XMLHttpRequest.DONE){
+          console.log('request status : ' + req.status);
+          if (req.status === 200){
+              console.log('User logged in');
+              alert ('Logged in successfully');
+          }
+          else if (req.status === 403){
+              alert ('Username or password is wrong');
+          }
+          else {
+              alert ('Something is wrong at server');
+          }
+      }  
+    };
+    req.open('POST', 'http://ashanirmal.imad.hasura-app.io/login',true);
+    req.setRequestHeader('Content-Type','application/json');
+    req.send(JSON.stringify({'username':username,'password':password}));
+    console.log('called name login api');
 };
