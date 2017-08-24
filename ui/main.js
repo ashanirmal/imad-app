@@ -85,8 +85,9 @@ login.onclick = function (){
           }
       }  
     };
+    console.log('login : '+ username + ' password : '+password);
     req.open('POST', 'http://ashanirmal.imad.hasura-app.io/login',true);
     req.setRequestHeader('Content-Type','application/json');
-    req.send(JSON.stringify({'username':username,'password':password}));
+    req.send(JSON.stringify({username:username,password:password}));
     console.log('called name login api');
 };
