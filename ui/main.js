@@ -65,8 +65,6 @@ submit.onclick = function (){
 };
 
 //Login
-var username = document.getElementById('username').value;
-var password = document.getElementById('password').value;
 var login = document.getElementById('login-btn');
 login.onclick = function (){
     var req = new XMLHttpRequest();
@@ -85,6 +83,8 @@ login.onclick = function (){
           }
       }  
     };
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
     console.log('login : '+ username + ' password : '+password);
     req.open('POST', 'http://ashanirmal.imad.hasura-app.io/login',true);
     req.setRequestHeader('Content-Type','application/json');
