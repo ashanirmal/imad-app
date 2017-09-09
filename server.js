@@ -112,11 +112,13 @@ app.post('/login', function (req, res) {
     var password = req.body.password;
     
     pool.query('SELECT * FROM "user" WHERE username = $1',[username],function(err,result){
+        var responsejson = {};
         if (err){
             res.status(500).send(err.toString());
         } else {
             if (result.rows.length === 0) {
-                res.status(403).send("Username/Password is invalid");
+                responsejson["message"] = "Username/Password is invalid";
+                res.status(403).send(JSON.stringify(responsejson));
             }
             else {
                 //Match the password
@@ -125,10 +127,12 @@ app.post('/login', function (req, res) {
                 var hashedPassword = hash(password,salt);
                 if (hashedPassword === dbString) {
                     req.session.auth = {userId: result.rows[0].id};
-                    res.send("User successfully logged in : "+username);
+                    responsejson["message"] = "User successfully logged in : "+username;
+                    res.send(JSON.stringify(responsejson));
                 }
                 else {
-                    res.status(403).send("Username / Password is invalid");
+                    responsejson["message"] = "Username/Password is invalid";
+                    res.status(403).send(JSON.stringify(responsejson));
                 }
             }
         }
