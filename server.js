@@ -164,7 +164,7 @@ app.get('/get-articles', function (req, res) {
                     article["content"] = result.rows[i].content;
                     responsejson[i] = article;
                 }
-                res.send(JSON.stringify(responsejson));
+                res.send((responsejson));
             }
         }
     } );
