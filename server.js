@@ -162,7 +162,7 @@ app.get('/get-articles', function (req, res) {
                     article["heading"] = result.rows[i].heading;
                     article["date"] = result.rows[i].date;
                     article["content"] = result.rows[i].content;
-                    responsejson[""] = article;
+                    responsejson[i] = article;
                 }
                 res.send(JSON.stringify(responsejson));
             }
