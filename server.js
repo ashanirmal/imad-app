@@ -145,7 +145,7 @@ app.post('/login', function (req, res) {
 
 app.get('/get-articles', function (req, res) {
     pool.query('SELECT * FROM "article"',null,function(err,result){
-        var responsejson = {};
+        var responsejson = [];
         if (err){
             res.status(500).send(err.toString());
         } else {
