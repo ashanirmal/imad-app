@@ -144,9 +144,6 @@ app.post('/login', function (req, res) {
 });
 
 app.get('/get-articles', function (req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-    
     pool.query('SELECT * FROM "article"',null,function(err,result){
         var responsejson = {};
         if (err){
