@@ -39,6 +39,7 @@ function createTemplate (data){
             <div class="container">
             <h3>${heading}</h3>
             <div>${dateStr}</div>
+            <br>
             <div>
                ${content}
             </div>
