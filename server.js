@@ -99,15 +99,16 @@ app.post('/create-user', function (req, res) {
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password,salt);
     pool.query('INSERT INTO "user"(username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
-        /*if (err){
-            responsejson["error"] = "Error in inserting "+username + " error : "+ err.toString();
-            res.status(500).send(JSON.stringify(responsejson));
+        var responsejson = {};
+        if (err){
+            res.status(500).send(err.toString());
         } else {
             responsejson["message"] = "User successfully created : "+username;
             res.send(JSON.stringify(responsejson));
-        }*/
+        }
     } );
 });
+
 
 app.post('/login', function (req, res) {
     var username = req.body.username;
