@@ -143,6 +143,36 @@ app.post('/login', function (req, res) {
     } );
 });
 
+app.post('/get-articles', function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    pool.query('SELECT * FROM "article"',null,function(err,result){
+        var responsejson = {};
+        if (err){
+            res.status(500).send(err.toString());
+        } else {
+            var len = result.rows.length;
+            if (len === 0) {
+                responsejson["message"] = "No articles found";
+                res.status(403).send(JSON.stringify(responsejson));
+            }
+            else {
+                for (var i = 0; i < len; i++) {
+                    var article = {};
+                    article["id"] = result.rows[i].id;
+                    article["title"] = result.rows[i].title;
+                    article["heading"] = result.rows[i].heading;
+                    article["date"] = result.rows[i].date;
+                    article["content"] = result.rows[i].content;
+                    responsejson[""] = article;
+                }
+                res.send(JSON.stringify(responsejson));
+            }
+        }
+    } );
+});
+
 app.get('/check-login',function(req,res){
     if (req.session && req.session.auth && req.session.auth.userId) {
         res.send('You are logged in as : '+req.session.auth.userId);
